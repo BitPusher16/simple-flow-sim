@@ -12,14 +12,35 @@
 
 # if no args given to make, it runs the first rule.
 
+#CC=gcc
+#CFLAGS=-I./include
+#
+#bin/simple_flow_sim.exe: build/main.o
+#	$(CC) build/main.o -o bin/simple_flow_sim.exe
+#
+#build/main.o: src/main.c
+#	$(CC) -c src/main.c -o build/main.o
+#
+#clean:
+#	rm build/main.o
+#	rm bin/simple_flow_sim.exe
+
+# $@ is target name.
+# $? is all prerequisites newer than target.
+# $^ is all prerequisites.
+
 CC=gcc
-CFLAGS=-I./include
+INCLUDES=-I./include
+CFLAGS=-g
+LIBS=-lm
+_OBJECTS=main.o
+OBJECTS=$(patsubst %.o,build/%.o,$(_OBJECTS))
 
-bin/simple_flow_sim.exe: build/main.o
-	$(CC) build/main.o -o bin/simple_flow_sim.exe
+bin/simple_flow_sim.exe: $(OBJECTS)
+	$(CC) $? -o $@ $(LIBS)
 
-build/main.o: src/main.c
-	$(CC) -c src/main.c -o build/main.o
+build/%.o: src/%.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c $? -o $@
 
 clean:
 	rm build/main.o

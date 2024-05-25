@@ -1,0 +1,16 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-I./include",
+      "-g",
+      "-c",
+      "-o",
+      "build/main.o",
+      "src/main.c"
+    ],
+    "directory": "/home/fj/src/simple-flow-sim",
+    "file": "/home/fj/src/simple-flow-sim/src/main.c",
+    "output": "/home/fj/src/simple-flow-sim/build/main.o"
+  }
+]
