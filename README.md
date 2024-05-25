@@ -25,3 +25,6 @@ https://www.lucavall.in/blog/how-to-structure-c-projects-my-experience-best-prac
 ├── Makefile
 └── README.md
 
+# debugging
+use BEAR to generate compile_commands.json from makefile.
+run with $ bear make
